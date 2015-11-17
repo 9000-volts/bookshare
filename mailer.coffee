@@ -5,6 +5,8 @@ transporter = nodemailer.createTransport
     user: 'booksharingcucc@gmail.com'
     pass: process.env.BOOKSHARE_PASSWORD
 
+console.log process.env.BOOKSHARE_PASSWORD
+
 module.exports =
   sendListingRequestMessage: (email, takedowncode, information, address) ->
     mailOptions =
