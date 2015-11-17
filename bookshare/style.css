@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Slabo 27px', sans-serif;
+  margin: 0;
+}
+body>* {
+  padding: 1.5em 3em;
+  background-attachment: fixed;
+  color: #222;
+  text-align: center;
+}
+header {
+  font-size: 5em;
+  font-family: 'Oleo Script', cursive;
+  color: #fff;
+  background-image: url(/background.jpg);
+}
+header .button {
+  font-size: .25em;
+  display: block;
+  text-decoration: none;
+  margin: 0 auto;
+  width: 10em;
+  padding: 1em;
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+  margin-top: 3em;
+  cursor: pointer;
+  font-family: 'Slabo 27px', sans-serif;
+}
+@media all and (max-width: 700px) {
+  body>* {
+    padding: .5em;
+  }
+  header {
+    font-size: 3em;
+  }
+  header button {
+    font-size: .4em;
+    margin-top: .5em;
+  }
+}
+#listings>div {
+  width: 100%;
+  padding: 1em;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+.action {
+  float: right;
+  font-size: .7em;
+  font-weight: normal;
+  padding: .5em;
+  background: rgb(255, 38, 0);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-left: 1em;
+}
+#addlisting {
+  background: #888;
+  color: #fff;
+  border-bottom: 1px solid #777;
+  cursor: pointer;
+}

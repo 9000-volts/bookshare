@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Listings - Book Sharing</title>
+    <link href='https://fonts.googleapis.com/css?family=Oleo+Script|Slabo+27px' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <header>
+      Book Listings!
+    </header>
+    <div id="addlisting">
+      <h1>Click Here to Add a Listing!</h1>
+    </div>
+    <div id="listings">
+    </div>
+    <script>
+      var socket = io();
+      socket.on("connect", function () {
+        socket.emit("connection-bookshare-listings");
+        document.querySelector("#addlisting").onclick = function () {
+          var email = prompt("Enter your Email for the Listing:");
+          var info = prompt("Enter the Listing Information (e.g. Book Title, Author:)");
+          if (email && info) socket.emit("add-listing", email, info);
+        };
+        socket.on("listings", function (listings) {
+          var listingdiv = document.querySelector("#listings");
+          listingdiv.innerHTML = "";
+          listings.forEach(function(listing) {
+            var listingbox = document.createElement("div");
+            listingbox.innerHTML = listing.information;
+            var listingbutton = document.createElement("button");
+            listingbutton.className = "action";
+            listingbutton.innerHTML = "Request Book";
+            listingbutton.onclick = function () {
+              var address = prompt("Enter Your Address to Request the Listing:");
+              if (address) socket.emit("request-listing", listing.index, address);
+              alert("Listing Requested! If your request is approved you will get the listing in the mail!");
+            };
+            listingbox.appendChild(listingbutton);
+            var removebutton = document.createElement("button");
+            removebutton.className = "action";
+            removebutton.innerHTML = "Remove Listing";
+            removebutton.onclick = function () {
+              var code = prompt("Enter the Removal Code:");
+              socket.emit("remove-listing", listing.index, code);
+            };
+            listingbox.appendChild(removebutton);
+            listingdiv.appendChild(listingbox);
+          });
+        });
+        socket.on("reload", function () {
+          window.location.reload();
+        });
+      });
+    </script>
+  </body>
+</html>

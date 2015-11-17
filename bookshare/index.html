@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Book Sharing</title>
+    <link href='https://fonts.googleapis.com/css?family=Oleo+Script|Slabo+27px' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.rawgit.com/snaptortoise/konami-js/master/konami.js"></script>
+  </head>
+  <body>
+    <header>
+      Take a book. Leave a book.
+      <a class="button" href="/listings">View Listings</a>
+    </header>
+    <div>
+      <h1>Explore from a catalogue of <u id="listings">many</u> books!</h1>
+      <b>Done with a book</b>? <b>Need a book</b> but don't want to buy a new copy?
+      Can't afford it? No longer in print?
+      This site is an online take-a-book/leave-a-book!
+      Drop your email and some book info and get emailed with an address to send
+      your book to when somebody requests it!
+    </div>
+    <script>
+      var socket = io();
+      socket.on("connect", function () {
+        socket.emit("connection-bookshare-homepage");
+        socket.on("stats", function (listings) {
+          document.querySelector("#listings").innerHTML = listings;
+        })
+      });
+      new Konami(function () {
+        alert("How much wood would a woodchuck chuck if a woodchuck could chuck wood?");
+      });
+    </script>
+  </body>
+</html>
