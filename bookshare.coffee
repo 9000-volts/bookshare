@@ -1,7 +1,6 @@
 mailer = require "./mailer"
 database = require "./database"
 module.exports = (app, io) ->
-  mailer.sendDemoMessage()
 
   app.get '/', (req, res) -> res.sendfile 'bookshare/index.html'
 

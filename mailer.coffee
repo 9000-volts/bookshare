@@ -46,20 +46,3 @@ module.exports =
       """
     transporter.sendMail mailOptions, (error, info) ->
       console.log error if error
-
-  sendDemoMessage: ->
-    mailOptions =
-      to: "htmlguy999@gmail.com",
-      subject: "Bookshare Server Started!",
-      text: """
-      > Bookshare Server Started!
-      This is a test of the email system of the Bookshare Server.
-      This is to notify you that it has started.
-      """
-      html: """
-      <h1>Bookshare Server Started</h1>
-      This is a test of the email system of the Bookshare Server.<br/>
-      This is to notify you that it has started.
-      """
-    transporter.sendMail mailOptions, (error, info) ->
-      console.log error if error

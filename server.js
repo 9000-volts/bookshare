@@ -6,6 +6,6 @@ require('coffee-script/register');
 
 require('./bookshare')(app, io);
 
-http.listen(process.env.OPENSHIFT_NODEJS_PORT || 8080, process.env.OPENSHIFT_NODEJS_IP || "localhost", function(){
+http.listen(process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080, process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "localhost", function(){
   console.log('listening on *:8080');
 });
