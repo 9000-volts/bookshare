@@ -1,23 +1,17 @@
 {
-  "name": "OpenShift-Sample-App",
+  "name": "Bookshare Server",
   "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "description": "http://bookworld.cu.cc Server.",
   "keywords": [
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
+    "bookshare",
+    "bookworld",
+    "bookworld.cu.cc",
+    "server"
   ],
-  "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
-  },
-  "homepage": "http://www.openshift.com/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/openshift/origin-server"
-  },
+  "author": "htmlguy",
+  "license": "MIT",
+  "homepage": "http://bookworld.cu.cc/",
+  "repository": "htmlguy/bookshare",
   "engines": {
     "node": ">= 0.6.0",
     "npm": ">= 1.0.0"
