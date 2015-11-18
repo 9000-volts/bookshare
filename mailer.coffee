@@ -3,7 +3,7 @@ transporter = nodemailer.createTransport
   service: 'Gmail'
   auth:
     user: 'booksharingcucc@gmail.com'
-    pass: process.env.BOOKSHARE_PASSWORD
+    pass: require("./getsensitivedata").dbPassword()
 
 module.exports =
   sendListingRequestMessage: (email, takedowncode, information, address) ->

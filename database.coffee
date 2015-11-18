@@ -23,7 +23,7 @@ module.exports =
     savedb()
   removeListing: (index, code) ->
     if db.listings[index].takedowncode is parseInt(code) or
-    code is process.env.BOOKSHARE_PASSWORD
+    code is require("./getsensitivedata").dbPassword()
       db.listings[index] = undefined
       savedb()
   sendListingRequest: (index, address) ->
