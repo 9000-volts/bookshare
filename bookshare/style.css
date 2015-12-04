@@ -67,3 +67,37 @@ header .button {
   border-bottom: 1px solid #777;
   cursor: pointer;
 }
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 5em;
+  background: #fff;
+  display: none;
+}
+input {
+  display: block;
+  width: 21em;
+  padding: 1em;
+  border-radius: 1ex;
+  margin: 1em auto;
+  border: 1px solid #ccc;
+}
+.dialog button {
+  border-radius: 1ex;
+  width: 10em;
+  padding: 0.6em;
+  color: #fff;
+  cursor: pointer;
+  margin: 0.5ex;
+}
+.dialog button.green {
+  background: rgb(81, 153, 74);
+  border: 1px solid rgb(31, 75, 27);
+}
+.dialog button.red {
+  background: rgb(154, 52, 52);
+  border: 1px solid rgb(75, 27, 27);
+}

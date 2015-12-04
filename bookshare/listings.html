@@ -14,10 +14,29 @@
 
   ga('create', 'UA-70945415-1', 'auto');
   ga('send', 'pageview');
- 
+
 </script>
   </head>
   <body>
+    <div id="add" class="dialog">
+      <h1>Add a Listing</h1>
+      <input type="text" id="listingname" placeholder="Listing Name">
+      <input type="text" id="listingemail" placeholder="Your Email">
+      <button id="completelisting" class="green">Add Listing</button>
+      <button id="abortlisting" class="red">Cancel</button>
+    </div>
+    <div id="remove" class="dialog">
+      <h1>Remove Listing</h1>
+      <input type="text" id="remove-code" placeholder="Your Removal Code">
+      <button id="removelisting" class="green">Remove Listing</button>
+      <button id="abortrem" class="red">Cancel</button>
+    </div>
+    <div id="request" class="dialog">
+      <h1>Request Listing</h1>
+      <input type="text" id="request-address" placeolder="Recieving Address">
+      <button id="requestlisting" class="green">Request Listing</button>
+      <button id="abortreq" class="red">Cancel</button>
+    </div>
     <header>
       Book Listings!
     </header>
@@ -28,12 +47,39 @@
     </div>
     <script>
       var socket = io();
+      var concerning = -1;
       socket.on("connect", function () {
         socket.emit("connection-bookshare-listings");
         document.querySelector("#addlisting").onclick = function () {
-          var email = prompt("Enter your Email for the Listing:");
-          var info = prompt("Enter the Listing Information (e.g. Book Title, Author:)");
-          if (email && info) socket.emit("add-listing", email, info);
+          document.querySelector("#add").style.display = "block";
+        };
+        var hideAdd = function () {
+          document.querySelector("#add").style.display = "none";
+        };
+        var hideRemove = function () {
+          document.querySelector("#remove").style.display = "none";
+        };
+        var hideRequest = function () {
+          document.querySelector("#request").style.display = "none";
+        };
+        document.querySelector("#abortlisting").onclick = hideAdd;
+        document.querySelector("#abortrem").onclick = hideRemove;
+        document.querySelector("#abortreq").onclick = hideRequest;
+        document.querySelector("#completelisting").onclick = function () {
+          hideAdd();
+          socket.emit("add-listing",
+            document.querySelector("#listingemail").value,
+            document.querySelector("#listingname").value);
+        };
+        document.querySelector("#removelisting").onclick = function () {
+          hideRemove();
+          socket.emit("remove-listing", concerning,
+            document.querySelector("#remove-code").value);
+        };
+        document.querySelector("#requestlisting").onclick = function () {
+          hideRequest();
+          socket.emit("request-listing", concerning,
+            document.querySelector("#request-address").value);
         };
         socket.on("listings", function (listings) {
           var listingdiv = document.querySelector("#listings");
@@ -45,17 +91,16 @@
             listingbutton.className = "action";
             listingbutton.innerHTML = "Request Book";
             listingbutton.onclick = function () {
-              var address = prompt("Enter Your Address to Request the Listing:");
-              if (address) socket.emit("request-listing", listing.index, address);
-              alert("Listing Requested! If your request is approved you will get the listing in the mail!");
+              concerning = listing.index;
+              document.querySelector("#request").style.display = "block";
             };
             listingbox.appendChild(listingbutton);
             var removebutton = document.createElement("button");
             removebutton.className = "action";
             removebutton.innerHTML = "Remove Listing";
             removebutton.onclick = function () {
-              var code = prompt("Enter the Removal Code:");
-              socket.emit("remove-listing", listing.index, code);
+              concerning = listing.index;
+              document.querySelector("#remove").style.display = "block";
             };
             listingbox.appendChild(removebutton);
             listingdiv.appendChild(listingbox);
