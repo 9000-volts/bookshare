@@ -25,7 +25,7 @@ var Listing = function (name, id, category) {
   this.id = id;
   var list = document.querySelector("#listings-" + category);
   list.classList.remove("empty");
-  
+
   var listingbox = document.createElement("div");
   listingbox.innerHTML = `<div>${name}</div>
   <button id='request-${id}'>Request</button>
@@ -77,3 +77,6 @@ document.querySelector("#scibtn").onclick = function () { tab("sci"); };
 document.querySelector("#nfbtn").onclick = function () { tab("nf"); };
 document.querySelector("#ficbtn").onclick = function () { tab("fic"); };
 document.querySelector("#relbtn").onclick = function () { tab("rel"); };
+document.querySelector("#sfibtn").onclick = function () { tab("sfi"); };
+document.querySelector("#fanbtn").onclick = function () { tab("fan"); };
+document.querySelector("#heabtn").onclick = function () { tab("hea"); };
