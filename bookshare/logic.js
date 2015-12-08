@@ -24,7 +24,8 @@ var Listing = function (name, id, category) {
   this.name = name;
   this.id = id;
   var list = document.querySelector("#listings-" + category);
-
+  list.classList.remove("empty");
+  
   var listingbox = document.createElement("div");
   listingbox.innerHTML = `<div>${name}</div>
   <button id='request-${id}'>Request</button>

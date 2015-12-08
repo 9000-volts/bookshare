@@ -22,6 +22,14 @@ body {
   height: 100%;
   overflow-y: scroll;
 }
+.col-right>div.empty:before {
+  content: "This section is currently empty. Click the + to add a listing.";
+  font-size: 1.5em;
+  color: #aaa;
+  text-align: center;
+  margin: 2em;
+  display: block;
+}
 .col-right>div>div {
   border-bottom: 1px solid #eee;
   margin-bottom: 3px;
