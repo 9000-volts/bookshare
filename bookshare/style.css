@@ -24,6 +24,7 @@ body {
 }
 .col-right>div>div {
   border-bottom: 1px solid #eee;
+  margin-bottom: 3px;
 }
 .col-right>div>div>div {
   padding: 1em;
