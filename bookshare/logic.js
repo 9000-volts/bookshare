@@ -75,3 +75,4 @@ document.querySelector("#magbtn").onclick = function () { tab("mag"); };
 document.querySelector("#scibtn").onclick = function () { tab("sci"); };
 document.querySelector("#nfbtn").onclick = function () { tab("nf"); };
 document.querySelector("#ficbtn").onclick = function () { tab("fic"); };
+document.querySelector("#relbtn").onclick = function () { tab("rel"); };

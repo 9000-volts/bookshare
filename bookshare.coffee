@@ -1,6 +1,6 @@
 mailer = require "./mailer"
 database = require "./database"
-validcategories = ["mag", "sci", "nf", "fic"]
+validcategories = ["mag", "sci", "nf", "fic", "rel"]
 module.exports = (app, io) ->
 
   app.get '/', (req, res) -> res.sendfile 'bookshare/index.html'
