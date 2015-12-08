@@ -11,13 +11,14 @@ savedb = ->
 
 module.exports =
   listings: -> db.listings.filter (listing) -> if listing then true else false
-  addListing: (email, information) ->
+  addListing: (email, information, category) ->
     index = db.listings.length
     db.listings.push
       email: email
       takedowncode: Math.floor(10000 + Math.random() * 80000)
       information: information
       index: index
+      category: category
     mailer.sendListingAddedMessage email, db.listings[index].takedowncode,
     information
     savedb()
