@@ -27,9 +27,7 @@ var Listing = function (name, id, category) {
   list.classList.remove("empty");
 
   var listingbox = document.createElement("div");
-  listingbox.innerHTML = `<div>${name}</div>
-  <button id='request-${id}'>Request</button>
-  <button id='remove-${id}'>Remove</button>`;
+  listingbox.innerHTML = "<div>" + name + "</div><button id='request-" + id + "'>Request</button><button id='remove-" + id + "'>Remove</button>";
   list.appendChild(listingbox);
 
   document.querySelector("#request-" + id).onclick = function () {
